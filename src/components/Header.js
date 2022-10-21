@@ -1,6 +1,6 @@
 import React from "react"
 
-export function Header() {
+export function Header(props) {
     return(
         <header>
         <div className="headerLeft">
@@ -11,7 +11,7 @@ export function Header() {
           </div>
         </div>
         <ul className="headerRight">
-          <li>
+          <li onClick={props.onClickCart}>
             <img width={18} height={18} src="/img/cart.svg" alt="" />
             <span>1205 руб</span>
           </li>

@@ -1,28 +1,22 @@
 import React from "react"
 
-export function Drawer() {
+export function Drawer({onCloseCart, cartItems = []}) {
     return(
-        <div className="overlay" style={{ display: "none" }}>
+        <div className="overlay">
         <div className="drawer">
-          <h2>Корзина<img className="removeBtn" src="img/btn-remove.svg" alt="Remove" /></h2>
+          <h2>Корзина<img onClick={onCloseCart} className="removeBtn" src="img/btn-remove.svg" alt="Remove" /></h2>
 
           <div className="items">
-            <div className="cartItem">
-              <div style={{ backgroundImage: "url(img/sneakers/1.jpg)" }} className="cartItemImg"></div>
+            {cartItems.map((obj) => (
+              <div className="cartItem">
+              <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className="cartItemImg"></div>
               <div className="cartItemInf">
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
+                <p>{obj.title}</p>
+                <b>{obj.price} руб.</b>
               </div>
               <img className="removeBtn" src="img/btn-remove.svg" alt="Remove" />
             </div>
-            <div className="cartItem">
-              <div style={{ backgroundImage: "url(img/sneakers/2.jpg)" }} className="cartItemImg"></div>
-              <div className="cartItemInf">
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
-              </div>
-              <img className="removeBtn" src="img/btn-remove.svg" alt="Remove" />
-            </div>
+            ))}
           </div>
           <div className="cartTotalBlock">
             <ul>

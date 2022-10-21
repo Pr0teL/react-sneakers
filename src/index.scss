@@ -51,6 +51,7 @@ header {
 .headerRight {
   display: flex;
   li:nth-child(1){
+    cursor: pointer;
     margin-right: 30px;
     img{
       margin-right: 10px;
@@ -66,9 +67,9 @@ header {
   }
 }
 
-
 .cardsSN {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .search-block {
