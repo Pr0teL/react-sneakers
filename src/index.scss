@@ -181,6 +181,31 @@ header {
     background: darken(#9DD558, 5%);
   }
 }
+
+.buttonBack{
+  width: 70%;
+  img{
+    transform: rotate(180deg);
+    margin-right: 20px;
+  }
+}
+
+.cart-empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  p{
+    text-align: center;
+    opacity: 0.6;
+    margin-bottom: 50px;
+  }
+  img:nth-child(0){
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+}
 .cartItem{
   display: flex;
   align-items: center;
