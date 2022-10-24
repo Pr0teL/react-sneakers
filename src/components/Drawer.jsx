@@ -37,7 +37,7 @@ export function Drawer({ onCloseCart, cartItems, onRemove = [] }) {
          </div>
             </>
           : <div className="cart-empty">
-            <img src="/img/empty-cart.png" alt="empty" />
+            <img width={120} height={120} src="/img/empty-cart.png" alt="empty" />
             <h2>Корзина пустая</h2>
             <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
             <button onClick={onCloseCart} className="greenButton buttonBack"><img src="img/arrow.svg" alt="" />Вернуться назад</button>

@@ -30,11 +30,16 @@ header {
   align-items: center;
   padding: 40px;
   border-bottom: 1px solid #eaeaea;
+  a{
+    text-decoration: none;
+  }
 
 
 .headerLeft {
   display: flex;
   align-items: center;
+  color: #000;
+  
   img {
     margin-right: 15px;
   }
@@ -56,6 +61,17 @@ header {
     img{
       margin-right: 10px;
     }
+    span{
+      display: inline-block;
+      transform: translateY(-2px);
+      font-size: 17px;
+      font-weight: bold;
+    }
+  }
+  li:nth-child(2){
+    cursor: pointer;
+    margin-right: 30px;
+
   }
 }
 }
