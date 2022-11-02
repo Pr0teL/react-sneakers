@@ -2,14 +2,13 @@ import React from "react"
 import Card from '../components/Card'
 
 
-export default function Home({ items, cartItems, searchValue, onChangeSearchInput, onAddFavorite, onAddtoCart, isLoading }) {
 
+export default function Home({ items, searchValue, onChangeSearchInput, onAddFavorite, onAddtoCart, isLoading }) {
   const renderItems = () => {
-    return (isLoading ? [...Array(10)] : items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))).map((item) => (
+    return (isLoading ? [...Array(12)] : items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))).map((item) => (
       <Card
         onPlus={(obj) => onAddtoCart(obj)}
         onFavorite={(obj) => onAddFavorite(obj)}
-        added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
         loading={isLoading}
         {...item}
       />

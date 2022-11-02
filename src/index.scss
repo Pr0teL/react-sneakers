@@ -168,7 +168,9 @@ header {
       img {
         transform: translateX(5px);
       }
-      
+    &:disabled {
+      animation: button-loading 0.5s ease-in-out infinite;
+    }
     }
     
     img{
@@ -195,6 +197,10 @@ header {
   }
   &:active {
     background: darken(#9DD558, 5%);
+  }
+  &:disabled {
+    background: darken(#9dd55863, 5%);
+    cursor: default;
   }
 }
 
@@ -262,6 +268,18 @@ header {
   cursor: pointer;
   transition: opacity 0.15s ease-in-out;
   &:hover {
+    opacity: 1;
+  }
+}
+
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
     opacity: 1;
   }
 }
