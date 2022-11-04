@@ -7,7 +7,9 @@ export function Drawer({ onCloseCart, onRemove = [] }) {
   const [ordered, setOrdered] = React.useState(false)
   const [orderId, setOrderId] = React.useState(null)
   const [isLoading, setIsLoading] = React.useState(false)
-  const { cartItems, setCartItems } = React.useContext(AppContext)
+  const { cartItems, setCartItems, cost,setCost } = React.useContext(AppContext)
+
+
   const onOrder = async () => {
     try {
       setIsLoading(true)
@@ -44,7 +46,7 @@ export function Drawer({ onCloseCart, onRemove = [] }) {
                     <p>{obj.title}</p>
                     <b>{obj.price} руб.</b>
                   </div>
-                  <img onClick={() => onRemove(obj.id)} className="removeBtn" src="img/btn-remove.svg" alt="Remove" />
+                  <img onClick={() => {onRemove(obj.id); setCost(cost - obj.price)}} className="removeBtn" src="img/btn-remove.svg" alt="Remove" />
                 </div>
               ))}
             </div>
@@ -53,12 +55,12 @@ export function Drawer({ onCloseCart, onRemove = [] }) {
                 <li>
                   <span>Итого:</span>
                   <div></div>
-                  <b>21 498 руб. </b>
+                  <b>{cost} руб. </b>
                 </li>
                 <li>
                   <span>Налог 5%:</span>
                   <div></div>
-                  <b>1074 руб. </b>
+                  <b>{cost * 0.05} руб. </b>
                 </li>
               </ul>
               <button disabled={isLoading} onClick={onOrder} className="greenButton">Оформить заказ <img src="img/arrow.svg" alt="" /></button>

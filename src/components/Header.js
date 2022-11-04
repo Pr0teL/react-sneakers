@@ -1,6 +1,8 @@
 import React from "react"
 import {Link} from 'react-router-dom'
+import AppContext from "../context"
 export function Header(props) {
+  const {cost} = React.useContext(AppContext)
     return(
         <header>
           <Link to="/">
@@ -15,14 +17,13 @@ export function Header(props) {
         <ul className="headerRight">
           <li onClick={props.onClickCart}>
             <img width={18} height={18} src="/img/cart.svg" alt="Cart" />
-            <span>1205 руб</span>
+            <span>{cost} руб</span>
           </li>
           <li>
             <Link to="/favorites">
             <img width={18} height={18} src="/img/heart.svg" alt="Favorites" />
             </Link>
-          </li>
-          <li>
+         
             <img width={18} height={18} src="/img/profile.svg" alt="Profile" />
           </li>
         </ul>

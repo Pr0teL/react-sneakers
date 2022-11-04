@@ -17,6 +17,7 @@ function App() {
   const [searchValue, setSearchValue] = React.useState("")
   const [cartOpened, setCartOpened] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(true)
+  const [cost, setCost] = React.useState(0)
 
   React.useEffect(() => {
     async function fetchData() {
@@ -27,6 +28,9 @@ function App() {
       setFavoriteItems(favoriteResponse.data);
       setCartItems(cartResponse.data);
       setIsLoading(false)
+      setCost(cartResponse.data.reduce((acc,el)=>{
+        return acc + el.price
+      }, 0))
     }
 
     fetchData()
@@ -36,9 +40,11 @@ function App() {
     try {
       if (isItemsAdded(obj.id)) {
         console.log(isItemsAdded())
+        setCost(prev => prev - obj.price)
         onRemoveItem(obj.id)
       } else {
         setCartItems(prev => [...prev, obj])
+        setCost(prev => prev + obj.price)
         await axios.post('https://6352c00ca9f3f34c37481a7c.mockapi.io/cart', obj)
       }
     } catch (error) {
@@ -77,7 +83,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{items, cartItems, favoriteItems, isItemsAdded, setCartOpened, setCartItems}}>
+    <AppContext.Provider value={{items, cartItems, favoriteItems, cost, isItemsAdded, setCartOpened, setCartItems, setCost}}>
       <div className="wrapper">
       {cartOpened && <Drawer onRemove={onRemoveItem} cartItems={cartItems} onCloseCart={() => setCartOpened(false)} />}
       <Header onClickCart={() => setCartOpened(true)} />
